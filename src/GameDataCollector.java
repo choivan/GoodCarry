@@ -9,17 +9,17 @@ import static java.util.Collections.*;
  * Time: 6:33 PM
  */
 public class GameDataCollector implements Runnable {
-    private Reporter reporter;
+    private IReporter reporter;
     private String userID;
     private ArrayList<Match> matches;
 
-    public GameDataCollector(Reporter r, String uid) {
+    public GameDataCollector(IReporter r, String uid) {
         setReporter(r);
         setUserID(uid);
         matches = new ArrayList<Match>();
     }
 
-    public void setReporter(Reporter r) {
+    public void setReporter(IReporter r) {
         reporter = r;
     }
 
@@ -49,6 +49,6 @@ public class GameDataCollector implements Runnable {
         }
         Collections.sort(matches);
 
-        System.out.println(matches);
+        reporter.report(matches);
     }
 }

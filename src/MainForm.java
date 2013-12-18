@@ -50,7 +50,8 @@ public class MainForm extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 System.out.println("click search...");
 
-                GameDataCollector collector = new GameDataCollector(null, searchTextField.getText());
+                IReporter reporter = new SimpleReporter();
+                GameDataCollector collector = new GameDataCollector(reporter, searchTextField.getText());
                 collector.run();
             }
         });
